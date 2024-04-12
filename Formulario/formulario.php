@@ -1,3 +1,43 @@
+<?php
+
+if(isset($_POST["submit"])){
+
+    // print_r($_POST["nome"]);
+// print_r("<br>");
+// print_r($_POST["email"]);
+// print_r("<br>");
+// print_r($_POST["telefone"]);
+// print_r("<br>");
+// print_r($_POST["genero"]);
+// print_r("<br>");
+// print_r($_POST["data_nascimento"]);
+// print_r("<br>");
+// print_r($_POST["cidade"]);
+// print_r("<br>");
+// print_r($_POST["estado"]);
+// print_r("<br>");
+// print_r($_POST["endereco"]);
+
+    include_once("config.php");
+
+$nome = $_POST["nome"];
+$email =$_POST["email"];
+$telefone= $_POST["telefone"];
+$genero = $_POST["genero"];
+$data_nasc=$_POST["data_nasc"];
+$cidade =$_POST["cidade"];
+$estado =$_POST["estado"];
+$endereco = $_POST["endereco"];
+$result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,telefone,genero,data_nasc,cidade,estado,endereco) 
+VALUES ('$nome','$email','$telefone','$genero','$data_nasc','$cidade','$estado','$endereco')");
+}
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +109,7 @@
             color: dodgerblue;
 
         }
-        #data_nascimento{
+        #data_nasc{
             border: none;
             padding: 8px;
             border-radius: 10px;
@@ -99,14 +139,14 @@
 
 
     <div class="box">
-        <form action="">
+        <form action="formulario.php" method="post">
             <fieldset>
 
                 <legend><b>Formulario de Cliente</b></legend>
                 <br>
                 <div class="inputBox">
-                    <input type="text" name="Nome" id="Nome" class="inputUser" required>
-                    <label class="LabelInput" for="Nome">Nome Completo</label>
+                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <label class="LabelInput" for="nome">Nome Completo</label>
                     
                 </div>
                 <br><br>
@@ -138,8 +178,8 @@
                     <label for="outro">Outro</label>
                     
                     <br><br>
-                    <label for="data_nascimento"><b>Data de Nascimento:</b></label>
-                    <input type="date" name="data_nascimento" id="data_nascimento" required>
+                    <label for="data_nasc"><b>Data de Nascimento:</b></label>
+                    <input type="date" name="data_nasc" id="data_nasc" required>
                     <br><br><br>
                     
                 
